@@ -36,7 +36,7 @@
     // Give the editor a name, the name will also be set as class name on the iframe and on the iframe's body 
     name:                 undef,
     // Whether the editor should look like the textarea (by adopting styles)
-    style:                true,
+    style:                false,
     // Id of the toolbar element, pass falsey value if you don't want any toolbar logic
     toolbar:              undef,
     // Whether urls, entered by the user should automatically become clickable-links
@@ -89,7 +89,7 @@
       }
       
       this.on("beforeload", function() {
-        this.synchronizer = new wysihtml5.views.Synchronizer(this, this.textarea, this.composer);
+        //this.synchronizer = new wysihtml5.views.Synchronizer(this, this.textarea, this.composer);
         if (this.config.toolbar) {
           this.toolbar = new wysihtml5.toolbar.Toolbar(this, this.config.toolbar);
         }
