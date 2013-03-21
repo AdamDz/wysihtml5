@@ -109,7 +109,7 @@
     _initSandbox: function() {
       var that = this;
       
-      this.sandbox = new dom.Sandbox(function() {
+      this.sandbox = new dom.NullSandbox(function() {
         that._create();
       }, {
         stylesheets:  this.config.stylesheets
@@ -133,7 +133,7 @@
       var that = this;
       
       this.doc                = this.sandbox.getDocument();
-      this.element            = this.doc.body;
+      this.element            = this.sandbox.getIframe();
       this.textarea           = this.parent.textarea;
       this.element.innerHTML  = this.textarea.getValue(true);
       
