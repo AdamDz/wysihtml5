@@ -5676,9 +5676,16 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
   wysihtml5.dom.NullSandbox = Base.extend(
     /** @scope wysihtml5.dom.NullSandbox.prototype */ {
 
-    constructor: function(readyCallback, config) {
+    constructor: function(readyCallback, container, config) {
+      this.callback = readyCallback || wysihtml5.EMPTY_FUNCTION;
       this.config   = wysihtml5.lang.object({}).merge(config).get();
-      this.iframe   = this._createIframe();
+      this.iframe   = container;
+      
+      this.loaded = true;
+
+      // Trigger the callback
+      var that = this;
+      setTimeout(function() { that.callback(that); }, 0);
     },
     
     insertInto: function(element) {
@@ -5694,44 +5701,18 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
     },
 
     getWindow: function() {
-      this._readyError();
+      return window;
     },
 
     getDocument: function() {
-      this._readyError();
+      return window.document;
     },
 
     destroy: function() {
       var iframe = this.getIframe();
-      iframe.parentNode.removeChild(iframe);
-    },
-
-    /**
-     * Creates the sandbox iframe
-     *
-     * Some important notes:
-     *  - We can't use HTML5 sandbox for now:
-     *    setting it causes that the iframe's dom can't be accessed from the outside
-     *    Therefore we need to set the "allow-same-origin" flag which enables accessing the iframe's dom
-     *    But then there's another problem, DOM events (focus, blur, change, keypress, ...) aren't fired.
-     *    In order to make this happen we need to set the "allow-scripts" flag.
-     *    A combination of allow-scripts and allow-same-origin is almost the same as setting no sandbox attribute at all.
-     *  - Chrome & Safari, doesn't seem to support sandboxing correctly when the iframe's html is inlined (no physical document)
-     *  - IE needs to have the security="restricted" attribute set before the iframe is 
-     *    inserted into the dom tree
-     *  - Believe it or not but in IE "security" in document.createElement("iframe") is false, even
-     *    though it supports it
-     *  - When an iframe has security="restricted", in IE eval() & execScript() don't work anymore
-     *  - IE doesn't fire the onload event when the content is inlined in the src attribute, therefore we rely
-     *    on the onreadystatechange event
-     */
-    _createIframe: function() {
-      var that   = this,
-          iframe = doc.createElement("div");
-      iframe.className = "wysihtml5-sandbox";
-     
-      return iframe;
+      //iframe.parentNode.removeChild(iframe);
     }
+    
   });
 })(wysihtml5);
 (function() {
@@ -8038,7 +8019,7 @@ wysihtml5.views.View = Base.extend(
     },
 
     show: function() {
-      this.iframe.style.display = this._displayStyle || "";
+      //this.iframe.style.display = this._displayStyle || "";
       
       if (!this.textarea.element.disabled) {
         // Firefox needs this, otherwise contentEditable becomes uneditable
@@ -8048,11 +8029,11 @@ wysihtml5.views.View = Base.extend(
     },
 
     hide: function() {
-      this._displayStyle = dom.getStyle("display").from(this.iframe);
+      //this._displayStyle = dom.getStyle("display").from(this.iframe);
       if (this._displayStyle === "none") {
-        this._displayStyle = null;
+      //  this._displayStyle = null;
       }
-      this.iframe.style.display = "none";
+      //this.iframe.style.display = "none";
     },
 
     disable: function() {
@@ -8107,13 +8088,13 @@ wysihtml5.views.View = Base.extend(
       
       this.sandbox = new dom.NullSandbox(function() {
         that._create();
-      }, {
+      }, this.textarea.element, {
         stylesheets:  this.config.stylesheets
       });
       this.iframe  = this.sandbox.getIframe();
       
       var textareaElement = this.textarea.element;
-      dom.insert(this.iframe).after(textareaElement);
+      //dom.insert(this.iframe).after(textareaElement);
       
       // Create hidden field which tells the server after submit, that the user used an wysiwyg editor
       if (textareaElement.form) {
@@ -8129,9 +8110,9 @@ wysihtml5.views.View = Base.extend(
       var that = this;
       
       this.doc                = this.sandbox.getDocument();
-      this.element            = this.doc.body;
+      this.element            = this.sandbox.getIframe();
       this.textarea           = this.parent.textarea;
-      this.element.innerHTML  = this.textarea.getValue(true);
+      //this.element.innerHTML  = this.textarea.getValue(true);
       
       // Make sure our selection handler is ready
       this.selection = new wysihtml5.Selection(this.parent);
@@ -8197,7 +8178,7 @@ wysihtml5.views.View = Base.extend(
       }
       
       // Okay hide the textarea, we are ready to go
-      this.textarea.hide();
+      //this.textarea.hide();
       
       // Fire global (before-)load event
       this.parent.fire("beforeload").fire("load");
@@ -9574,7 +9555,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
     // Give the editor a name, the name will also be set as class name on the iframe and on the iframe's body 
     name:                 undef,
     // Whether the editor should look like the textarea (by adopting styles)
-    style:                true,
+    style:                false,
     // Id of the toolbar element, pass falsey value if you don't want any toolbar logic
     toolbar:              undef,
     // Whether urls, entered by the user should automatically become clickable-links
@@ -9627,7 +9608,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
       }
       
       this.on("beforeload", function() {
-        this.synchronizer = new wysihtml5.views.Synchronizer(this, this.textarea, this.composer);
+        //this.synchronizer = new wysihtml5.views.Synchronizer(this, this.textarea, this.composer);
         if (this.config.toolbar) {
           this.toolbar = new wysihtml5.toolbar.Toolbar(this, this.config.toolbar);
         }
