@@ -42,7 +42,7 @@
     },
 
     show: function() {
-      this.iframe.style.display = this._displayStyle || "";
+      //this.iframe.style.display = this._displayStyle || "";
       
       if (!this.textarea.element.disabled) {
         // Firefox needs this, otherwise contentEditable becomes uneditable
@@ -52,11 +52,11 @@
     },
 
     hide: function() {
-      this._displayStyle = dom.getStyle("display").from(this.iframe);
+      //this._displayStyle = dom.getStyle("display").from(this.iframe);
       if (this._displayStyle === "none") {
-        this._displayStyle = null;
+      //  this._displayStyle = null;
       }
-      this.iframe.style.display = "none";
+      //this.iframe.style.display = "none";
     },
 
     disable: function() {
@@ -111,13 +111,13 @@
       
       this.sandbox = new dom.NullSandbox(function() {
         that._create();
-      }, {
+      }, this.textarea.element, {
         stylesheets:  this.config.stylesheets
       });
       this.iframe  = this.sandbox.getIframe();
       
       var textareaElement = this.textarea.element;
-      dom.insert(this.iframe).after(textareaElement);
+      //dom.insert(this.iframe).after(textareaElement);
       
       // Create hidden field which tells the server after submit, that the user used an wysiwyg editor
       if (textareaElement.form) {
@@ -135,7 +135,7 @@
       this.doc                = this.sandbox.getDocument();
       this.element            = this.sandbox.getIframe();
       this.textarea           = this.parent.textarea;
-      this.element.innerHTML  = this.textarea.getValue(true);
+      //this.element.innerHTML  = this.textarea.getValue(true);
       
       // Make sure our selection handler is ready
       this.selection = new wysihtml5.Selection(this.parent);
@@ -201,7 +201,7 @@
       }
       
       // Okay hide the textarea, we are ready to go
-      this.textarea.hide();
+      //this.textarea.hide();
       
       // Fire global (before-)load event
       this.parent.fire("beforeload").fire("load");

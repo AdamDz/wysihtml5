@@ -33,10 +33,10 @@
   wysihtml5.dom.NullSandbox = Base.extend(
     /** @scope wysihtml5.dom.NullSandbox.prototype */ {
 
-    constructor: function(readyCallback, config) {
+    constructor: function(readyCallback, container, config) {
       this.callback = readyCallback || wysihtml5.EMPTY_FUNCTION;
       this.config   = wysihtml5.lang.object({}).merge(config).get();
-      this.iframe   = this._createIframe();
+      this.iframe   = container;
       
       this.loaded = true;
 
@@ -67,34 +67,8 @@
 
     destroy: function() {
       var iframe = this.getIframe();
-      iframe.parentNode.removeChild(iframe);
-    },
-
-    /**
-     * Creates the sandbox iframe
-     *
-     * Some important notes:
-     *  - We can't use HTML5 sandbox for now:
-     *    setting it causes that the iframe's dom can't be accessed from the outside
-     *    Therefore we need to set the "allow-same-origin" flag which enables accessing the iframe's dom
-     *    But then there's another problem, DOM events (focus, blur, change, keypress, ...) aren't fired.
-     *    In order to make this happen we need to set the "allow-scripts" flag.
-     *    A combination of allow-scripts and allow-same-origin is almost the same as setting no sandbox attribute at all.
-     *  - Chrome & Safari, doesn't seem to support sandboxing correctly when the iframe's html is inlined (no physical document)
-     *  - IE needs to have the security="restricted" attribute set before the iframe is 
-     *    inserted into the dom tree
-     *  - Believe it or not but in IE "security" in document.createElement("iframe") is false, even
-     *    though it supports it
-     *  - When an iframe has security="restricted", in IE eval() & execScript() don't work anymore
-     *  - IE doesn't fire the onload event when the content is inlined in the src attribute, therefore we rely
-     *    on the onreadystatechange event
-     */
-    _createIframe: function() {
-      var that   = this,
-          iframe = doc.createElement("div");
-      iframe.className = "wysihtml5-sandbox";
-     
-      return iframe;
+      //iframe.parentNode.removeChild(iframe);
     }
+    
   });
 })(wysihtml5);
