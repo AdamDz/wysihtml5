@@ -83,6 +83,21 @@
   <br><input type="reset" value="Reset form!">
 </form>
 
+<b>
+<ul>
+  <li>
+    <div id="toolbar2" style="display: none;">
+      <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
+      <a data-wysihtml5-command="italic" title="CTRL+I">italic</a>
+      <a data-wysihtml5-action="change_view">switch to html view</a>
+    </div>
+    <div id="textarea2" placeholder="Enter text ...">
+      Nested editor
+    </div>
+  </li>
+</ul>
+</b>
+
 <h2>Events:</h2>
 <div id="log"></div>
 
@@ -163,6 +178,12 @@
 <script src="../src/editor.js"></script>
 
 <script>
+  new wysihtml5.Editor("textarea2", {
+    toolbar:        "toolbar2",
+    parserRules:    wysihtml5ParserRules,
+    useLineBreaks:  false
+  });
+
   var editor = new wysihtml5.Editor("textarea", {
     toolbar:        "toolbar",
     parserRules:    wysihtml5ParserRules,

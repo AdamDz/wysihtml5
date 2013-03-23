@@ -40,7 +40,7 @@ wysihtml5.dom.getParentElement = (function() {
   }
   
   function _getParentElementWithNodeName(node, nodeName, levels) {
-    while (levels-- && node && node.nodeName !== "BODY") {
+    while (levels-- && node && node.nodeName !== "BODY" && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
       if (_isSameNodeName(node.nodeName, nodeName)) {
         return node;
       }
@@ -50,7 +50,7 @@ wysihtml5.dom.getParentElement = (function() {
   }
   
   function _getParentElementWithNodeNameAndClassName(node, nodeName, className, classRegExp, levels) {
-    while (levels-- && node && node.nodeName !== "BODY") {
+    while (levels-- && node && node.nodeName !== "BODY" && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
       if (_isElement(node) &&
           _isSameNodeName(node.nodeName, nodeName) &&
           _hasClassName(node, className, classRegExp)) {

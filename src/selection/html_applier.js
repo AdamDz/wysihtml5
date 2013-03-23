@@ -160,7 +160,7 @@
   HTMLApplier.prototype = {
     getAncestorWithClass: function(node) {
       var cssClassMatch;
-      while (node) {
+      while (node && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
         cssClassMatch = this.cssClass ? hasClass(node, this.cssClass, this.similarClassRegExp) : true;
         if (node.nodeType == wysihtml5.ELEMENT_NODE && rangy.dom.arrayContains(this.tagNames, node.tagName.toLowerCase()) && cssClassMatch) {
           return node;
