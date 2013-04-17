@@ -4114,7 +4114,7 @@ wysihtml5.browser = (function() {
     }
     
     var elementClassName = element.className;
-    return (elementClassName.length > 0 && (elementClassName == className || new RegExp("(^|\\s)" + className + "(\\s|$)").test(elementClassName)));
+    return (elementClassName && elementClassName.length > 0 && (elementClassName == className || new RegExp("(^|\\s)" + className + "(\\s|$)").test(elementClassName)));
   };
 })(wysihtml5);
 wysihtml5.dom.contains = (function() {
@@ -4472,7 +4472,7 @@ wysihtml5.dom.getParentElement = (function() {
   }
   
   function _getParentElementWithNodeName(node, nodeName, levels) {
-    while (levels-- && node && node.nodeName !== "BODY") {
+    while (levels-- && node && node.nodeName !== "BODY" && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
       if (_isSameNodeName(node.nodeName, nodeName)) {
         return node;
       }
@@ -4482,7 +4482,7 @@ wysihtml5.dom.getParentElement = (function() {
   }
   
   function _getParentElementWithNodeNameAndClassName(node, nodeName, className, classRegExp, levels) {
-    while (levels-- && node && node.nodeName !== "BODY") {
+    while (levels-- && node && node.nodeName !== "BODY" && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
       if (_isElement(node) &&
           _isSameNodeName(node.nodeName, nodeName) &&
           _hasClassName(node, className, classRegExp)) {
@@ -6539,7 +6539,7 @@ wysihtml5.quirks.ensureProperClearing = (function() {
   HTMLApplier.prototype = {
     getAncestorWithClass: function(node) {
       var cssClassMatch;
-      while (node) {
+      while (node && !wysihtml5.dom.hasClass(node, "wysihtml5-editor")) {
         cssClassMatch = this.cssClass ? hasClass(node, this.cssClass, this.similarClassRegExp) : true;
         if (node.nodeType == wysihtml5.ELEMENT_NODE && rangy.dom.arrayContains(this.tagNames, node.tagName.toLowerCase()) && cssClassMatch) {
           return node;
@@ -9685,6 +9685,8 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
      *  - Observes for paste and drop
      */
     _initParser: function() {
+      // Don't use wysihtml5 parser - we will sanitize on the server.
+      /*
       this.on("paste:composer", function() {
         var keepScrollPosition  = true,
             that                = this;
@@ -9693,6 +9695,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           that.parse(that.composer.element);
         }, keepScrollPosition);
       });
+      */
     }
   });
 })(wysihtml5);
