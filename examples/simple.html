@@ -74,7 +74,8 @@
 <form>
   <div id="toolbar" style="display: none;">
     <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
-    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a>
+    <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+    
     <a data-wysihtml5-action="change_view">switch to html view</a>
   </div>
   <div id="textarea" placeholder="Enter text ...">
@@ -83,12 +84,13 @@
   <br><input type="reset" value="Reset form!">
 </form>
 
-<b>
 <ul>
   <li>
     <div id="toolbar2" style="display: none;">
       <a data-wysihtml5-command="bold" title="CTRL+B">bold</a> |
-      <a data-wysihtml5-command="italic" title="CTRL+I">italic</a>
+      <a data-wysihtml5-command="italic" title="CTRL+I">italic</a> |
+      <a data-wysihtml5-command="insertUnorderedList">insertUnorderedList</a> |
+      <a data-wysihtml5-command="insertOrderedList">insertOrderedList</a> 
       <a data-wysihtml5-action="change_view">switch to html view</a>
     </div>
     <div id="textarea2" placeholder="Enter text ...">
@@ -96,7 +98,6 @@
     </div>
   </li>
 </ul>
-</b>
 
 <h2>Events:</h2>
 <div id="log"></div>

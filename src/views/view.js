@@ -35,6 +35,10 @@ wysihtml5.views.View = Base.extend(
     try { this.element.focus(); } catch(e) {}
   },
   
+  hasFocus: function() {
+    return (this.element.ownerDocument.querySelector(":focus") === this.element);
+  },
+  
   hide: function() {
     this.element.style.display = "none";
   },
