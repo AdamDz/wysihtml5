@@ -94,7 +94,7 @@
     },
 
     hasPlaceholderSet: function() {
-      return this.getTextContent() == this.textarea.element.getAttribute("placeholder") && this.placeholderSet;
+      return wysihtml5.quirks.getCorrectInnerHTML(this.element) == this.textarea.element.getAttribute("placeholder") && this.placeholderSet;
     },
 
     isEmpty: function() {

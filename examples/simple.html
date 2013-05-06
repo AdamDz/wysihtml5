@@ -62,6 +62,10 @@
   .wysihtml5-command-active {
     font-weight: bold;
   }
+  
+  .wysihtml5-editor {
+    min-height: 100px;
+  }
 </style>
 
 <h1>wysihtml5 - Simple Editor Example</h1>
@@ -78,9 +82,7 @@
     
     <a data-wysihtml5-action="change_view">switch to html view</a>
   </div>
-  <div id="textarea" placeholder="Enter text ...">
-    Initial text.
-  </div>
+  <div id="textarea" placeholder="<p>Enter <b>text</b></p><p>...</p>"></div>
   <br><input type="reset" value="Reset form!">
 </form>
 
