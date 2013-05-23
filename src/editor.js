@@ -172,8 +172,6 @@
      *  - Observes for paste and drop
      */
     _initParser: function() {
-      // Don't use wysihtml5 parser - we will sanitize on the server.
-      /*
       this.on("paste:composer", function() {
         var keepScrollPosition  = true,
             that                = this;
@@ -182,7 +180,6 @@
           that.parse(that.composer.element);
         }, keepScrollPosition);
       });
-      */
     }
   });
 })(wysihtml5);

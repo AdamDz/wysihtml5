@@ -9695,8 +9695,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
      *  - Observes for paste and drop
      */
     _initParser: function() {
-      // Don't use wysihtml5 parser - we will sanitize on the server.
-      /*
       this.on("paste:composer", function() {
         var keepScrollPosition  = true,
             that                = this;
@@ -9705,7 +9703,6 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
           that.parse(that.composer.element);
         }, keepScrollPosition);
       });
-      */
     }
   });
 })(wysihtml5);
