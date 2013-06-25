@@ -13,7 +13,7 @@
  *
  *    <script>
  *      wysihtml5.dom.resolveList(document.getElementById("list"));
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    eminem<br>

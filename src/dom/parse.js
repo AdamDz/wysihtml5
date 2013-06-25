@@ -11,7 +11,7 @@
  * @return {Element|String} Depends on the elementOrHtml parameter. When html then the sanitized html as string elsewise the element.
  *
  * @example
- *    var userHTML = '<div id="foo" onclick="alert(1);"><p><font color="red">foo</font><script>alert(1);</script></p></div>';
+ *    var userHTML = '<div id="foo" onclick="alert(1);"><p><font color="red">foo</font><script>alert(1);</s cript></p></div>';
  *    wysihtml5.dom.parse(userHTML, {
  *      tags {
  *        p:      "div",      // Rename p tags to div tags

@@ -6,7 +6,7 @@
  *
  * @example
  *    <div id="text-container">Please click here: www.google.com</div>
- *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</script>
+ *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</s cript>
  */
 (function(wysihtml5) {
   var /**

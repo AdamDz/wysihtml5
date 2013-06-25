@@ -3951,7 +3951,7 @@ wysihtml5.browser = (function() {
  *
  * @example
  *    <div id="text-container">Please click here: www.google.com</div>
- *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</script>
+ *    <script>wysihtml5.dom.autoLink(document.getElementById("text-container"));</s cript>
  */
 (function(wysihtml5) {
   var /**
@@ -4149,7 +4149,7 @@ wysihtml5.dom.contains = (function() {
  *
  *    <script>
  *      wysihtml5.dom.convertToList(document.getElementById("pseudo-list"), "ul");
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    <ul>
@@ -4743,7 +4743,7 @@ wysihtml5.dom.observe = function(element, eventNames, handler) {
  * @return {Element|String} Depends on the elementOrHtml parameter. When html then the sanitized html as string elsewise the element.
  *
  * @example
- *    var userHTML = '<div id="foo" onclick="alert(1);"><p><font color="red">foo</font><script>alert(1);</script></p></div>';
+ *    var userHTML = '<div id="foo" onclick="alert(1);"><p><font color="red">foo</font><script>alert(1);</s cript></p></div>';
  *    wysihtml5.dom.parse(userHTML, {
  *      tags {
  *        p:      "div",      // Rename p tags to div tags
@@ -5249,7 +5249,7 @@ wysihtml5.dom.removeEmptyTextNodes = function(node) {
  *
  *    <script>
  *      wysihtml5.dom.renameElement(document.getElementById("list"), "ol");
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    <ol>
@@ -5278,7 +5278,7 @@ wysihtml5.dom.renameElement = function(element, newNodeName) {
  *    <script>
  *      // Remove #foo and replace with it's children
  *      wysihtml5.dom.replaceWithChildNodes(document.getElementById("foo"));
- *    </script>
+ *    </s cript>
  */
 wysihtml5.dom.replaceWithChildNodes = function(node) {
   if (!node.parentNode) {
@@ -5312,7 +5312,7 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
  *
  *    <script>
  *      wysihtml5.dom.resolveList(document.getElementById("list"));
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    eminem<br>
@@ -8965,7 +8965,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *      dialog.observe("save", function(attributes) {
  *        // do something
  *      });
- *    </script>
+ *    </s cript>
  */
 (function(wysihtml5) {
   var dom                     = wysihtml5.dom,
@@ -9239,7 +9239,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
  *
  *    <script>
  *      var toolbar = new wysihtml5.toolbar.Toolbar(editor, document.getElementById("toolbar"));
- *    </script>
+ *    </s cript>
  */
 (function(wysihtml5) {
   var CLASS_NAME_COMMAND_DISABLED   = "wysihtml5-command-disabled",

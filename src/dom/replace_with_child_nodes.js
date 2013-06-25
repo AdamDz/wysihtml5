@@ -9,7 +9,7 @@
  *    <script>
  *      // Remove #foo and replace with it's children
  *      wysihtml5.dom.replaceWithChildNodes(document.getElementById("foo"));
- *    </script>
+ *    </s cript>
  */
 wysihtml5.dom.replaceWithChildNodes = function(node) {
   if (!node.parentNode) {

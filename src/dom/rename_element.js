@@ -14,7 +14,7 @@
  *
  *    <script>
  *      wysihtml5.dom.renameElement(document.getElementById("list"), "ol");
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    <ol>

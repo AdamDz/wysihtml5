@@ -12,7 +12,7 @@
  *
  *    <script>
  *      var toolbar = new wysihtml5.toolbar.Toolbar(editor, document.getElementById("toolbar"));
- *    </script>
+ *    </s cript>
  */
 (function(wysihtml5) {
   var CLASS_NAME_COMMAND_DISABLED   = "wysihtml5-command-disabled",

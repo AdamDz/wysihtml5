@@ -15,7 +15,7 @@
  *
  *    <script>
  *      wysihtml5.dom.convertToList(document.getElementById("pseudo-list"), "ul");
- *    </script>
+ *    </s cript>
  *
  *    <!-- Will result in: -->
  *    <ul>

@@ -26,7 +26,7 @@
  *      dialog.observe("save", function(attributes) {
  *        // do something
  *      });
- *    </script>
+ *    </s cript>
  */
 (function(wysihtml5) {
   var dom                     = wysihtml5.dom,
