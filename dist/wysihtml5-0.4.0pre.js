@@ -9311,7 +9311,15 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
 
           that.editor.fire("show:dialog", { command: command, dialogContainer: dialogElement, commandLink: link });
         });
-
+        
+        dialog.on("edit", function() {
+          if (caretBookmark) {
+            that.composer.selection.setBookmark(caretBookmark);
+          } else {
+            that.editor.focus(false);
+          }
+        });
+        
         dialog.on("save", function(attributes) {
           if (caretBookmark) {
             that.composer.selection.setBookmark(caretBookmark);
