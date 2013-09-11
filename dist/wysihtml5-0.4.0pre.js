@@ -8345,7 +8345,7 @@ wysihtml5.views.View = Base.extend(
       }
 
       
-      dom.observe(this.doc, "keydown", function(event) {
+      dom.observe(this.element, "keydown", function(event) {
         var keyCode = event.keyCode;
         
         if (event.shiftKey) {
