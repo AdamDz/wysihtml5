@@ -1,6 +1,6 @@
 VERSION = $(shell cat version.txt)
 
-JS_OUTPUT = "dist/wysihtml5-${VERSION}.js"
+JS_OUTPUT = "../../www/js/lib/wysihtml5.js"
 
 OPEN = $(shell which xdg-open || which gnome-open || which open)
 
