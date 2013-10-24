@@ -48,6 +48,7 @@ JS_FILES = src/wysihtml5.js \
   src/commands/bold.js \
   src/commands/createLink.js \
   src/commands/fontSize.js \
+  src/commands/fontFamily.js \
   src/commands/foreColor.js \
   src/commands/formatBlock.js \
   src/commands/formatInline.js \

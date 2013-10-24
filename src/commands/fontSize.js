@@ -8,11 +8,13 @@
   
   wysihtml5.commands.fontSize = {
     exec: function(composer, command, size) {
-      return wysihtml5.commands.formatInline.exec(composer, command, "span", "wysiwyg-font-size-" + size, REG_EXP);
+        return wysihtml5.commands.formatBlock.exec(composer, "formatBlock", null, "wysiwyg-font-size-" + size, REG_EXP);
+    //  return wysihtml5.commands.formatInline.exec(composer, command, "span", "wysiwyg-font-size-" + size, REG_EXP);
     },
 
     state: function(composer, command, size) {
-      return wysihtml5.commands.formatInline.state(composer, command, "span", "wysiwyg-font-size-" + size, REG_EXP);
+        return wysihtml5.commands.formatBlock.state(composer, "formatBlock", null, "wysiwyg-font-size-" + size, REG_EXP);
+     // return wysihtml5.commands.formatInline.state(composer, command, "span", "wysiwyg-font-size-" + size, REG_EXP);
     }
   };
 })(wysihtml5);
